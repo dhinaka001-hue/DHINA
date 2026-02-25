@@ -1,0 +1,5 @@
+{
+  "name": "MsgClassifier",
+  "description": "AI-powered message classification tool to identify spam, personal, and transactional messages.",
+  "requestFramePermissions": []
+}
