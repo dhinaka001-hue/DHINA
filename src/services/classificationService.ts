@@ -1,11 +1,19 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
 export enum MessageType {
-  SPAM = "SPAM",
-  PERSONAL = "PERSONAL",
-  TRANSACTIONAL = "TRANSACTIONAL",
-  MARKETING = "MARKETING",
   OTP = "OTP",
+  BANK_TRANSACTION = "BANK_TRANSACTION",
+  SPAM = "SPAM",
+  PROMOTION = "PROMOTION",
+  PERSONAL = "PERSONAL",
+  DELIVERY = "DELIVERY",
+  RECHARGE_BILL = "RECHARGE_BILL",
+  COLLEGE_SCHOOL = "COLLEGE_SCHOOL",
+  JOB = "JOB",
+  SERVICE = "SERVICE",
+  TRAVEL = "TRAVEL",
+  EMERGENCY = "EMERGENCY",
+  SOCIAL_MEDIA = "SOCIAL_MEDIA",
   UNKNOWN = "UNKNOWN"
 }
 
@@ -26,7 +34,8 @@ export class ClassificationService {
   async classifyMessage(text: string): Promise<ClassificationResult> {
     const response = await this.ai.models.generateContent({
       model: "gemini-3-flash-preview",
-      contents: `Classify the following message text into one of these categories: SPAM, PERSONAL, TRANSACTIONAL, MARKETING, OTP, UNKNOWN.
+      contents: `Classify the following message text into one of these categories: 
+      OTP, BANK_TRANSACTION, SPAM, PROMOTION, PERSONAL, DELIVERY, RECHARGE_BILL, COLLEGE_SCHOOL, JOB, SERVICE, TRAVEL, EMERGENCY, SOCIAL_MEDIA, UNKNOWN.
       
       Message: "${text}"`,
       config: {
